@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 5f96411bd805a8fb5585e0eb612288595e364256804def9b2dd9244cce02b2f6
-  patches:
-    - 0001-bs4-canonical.patch
 
 build:
   noarch: python
