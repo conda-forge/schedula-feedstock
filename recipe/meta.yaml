@@ -36,7 +36,7 @@ requirements:
     - sphinxcontrib-restbuilder
   run:
     - dill
-    - networkx >=2.0.0
+    - networkx >=2.0.0,<2.4
     - python
 
 test:
