@@ -1,5 +1,5 @@
 {% set name = "schedula" %}
-{% set version = "0.3.4" %}
+{% set version = "0.3.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 5f96411bd805a8fb5585e0eb612288595e364256804def9b2dd9244cce02b2f6
+  sha256: 8c8858db876bec3127bb5f61895fc8b308f7e868c336a15e18aa50dd731de8bb
 
 build:
   noarch: python
@@ -36,7 +36,7 @@ requirements:
     - sphinxcontrib-restbuilder
   run:
     - dill
-    - networkx >=2.0.0
+    - networkx >=2.0.0,<2.4
     - python
 
 test:
