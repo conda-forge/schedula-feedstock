@@ -36,7 +36,7 @@ requirements:
     - sphinxcontrib-restbuilder
   run:
     - dill
-    - networkx >=2.0.0,<2.4
+    - networkx >=2.0.0
     - python
 
 test:
@@ -64,7 +64,7 @@ test:
   imports:
     - schedula
   commands:
-    - nosetests
+    - nosetests -e "test_errors"
 
 about:
   home: https://github.com/vinci1it2000/schedula
