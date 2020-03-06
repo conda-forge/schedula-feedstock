@@ -1,5 +1,5 @@
 {% set name = "schedula" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 5cceed641f18e868aab2fc00e0ec4f39cafbe14aeca3a626d02ca1640f01d7cb
+  sha256: 4e5cbb34563da64afc8b4639a1674997b5f6d1129f42bbe86ae9d10ddacbbe1c
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -23,11 +23,10 @@ requirements:
     - jinja2
     - lxml
     - multiprocess
-    - networkx >=2.0.0
     - nose
     - pip
     - pygments
-    - python >=3
+    - python >=3.6
     - python-graphviz
     - regex
     - requests
@@ -36,7 +35,6 @@ requirements:
     - sphinxcontrib-restbuilder
   run:
     - dill
-    - networkx >=2.0.0
     - python
 
 test:
@@ -53,11 +51,10 @@ test:
     - jinja2
     - lxml
     - multiprocess
-    - networkx >=2.0.0
     - nose
     - pip
     - pygments
-    - python >=3
+    - python >=3.6
     - python-graphviz <0.10.1
     - regex
     - requests
@@ -65,13 +62,14 @@ test:
     - schedula
   commands:
     - nosetests -e "test_errors"
+    - python -m pip check
 
 about:
   home: https://github.com/vinci1it2000/schedula
   license: EUPL-1.1
   license_family: OTHER
   license_file: LICENSE.txt
-  summary: 'An intelligent function scheduler, which selects and executes functions.'
+  summary: An intelligent function scheduler, which selects and executes functions.
   doc_url: https://schedula.readthedocs.io
 
 extra:
