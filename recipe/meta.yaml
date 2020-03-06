@@ -23,11 +23,10 @@ requirements:
     - jinja2
     - lxml
     - multiprocess
-    - networkx >=2.0.0
     - nose
     - pip
     - pygments
-    - python >=3
+    - python >=3.6
     - python-graphviz
     - regex
     - requests
@@ -36,7 +35,6 @@ requirements:
     - sphinxcontrib-restbuilder
   run:
     - dill
-    - networkx >=2.0.0
     - python
 
 test:
@@ -53,11 +51,10 @@ test:
     - jinja2
     - lxml
     - multiprocess
-    - networkx >=2.0.0
     - nose
     - pip
     - pygments
-    - python >=3
+    - python >=3.6
     - python-graphviz <0.10.1
     - regex
     - requests
@@ -65,6 +62,7 @@ test:
     - schedula
   commands:
     - nosetests -e "test_errors"
+    - python -m pip check
 
 about:
   home: https://github.com/vinci1it2000/schedula
