@@ -6,13 +6,17 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 420b381b003b2f63454965a9f0bda792a061e59b77a4d86d7c92b43cbdb8f2b2
+  - url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
+    sha256: 420b381b003b2f63454965a9f0bda792a061e59b77a4d86d7c92b43cbdb8f2b2
+    folder: dist
+  - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
+    sha256: 420b381b003b2f63454965a9f0bda792a061e59b77a4d86d7c92b43cbdb8f2b2
+    folder: src
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: cd dist && {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -34,14 +38,13 @@ requirements:
     - sphinx_rtd_theme
     - sphinxcontrib-restbuilder
   run:
-    - dill
     - python
 
 test:
   source_files:
-    - test/test_dispatcher.py
-    - test/utils
-    - setup.cfg
+    - src/tests/test_dispatcher.py
+    - src/tests/utils
+    - src/setup.cfg
   requires:
     - nose
     - docutils
@@ -61,16 +64,17 @@ test:
   imports:
     - schedula
   commands:
-    - nosetests -e "test_errors"
     - python -m pip check
+    - cd src && nosetests -e "test_errors"
 
 about:
   home: https://github.com/vinci1it2000/schedula
   license: EUPL-1.1
   license_family: OTHER
-  license_file: LICENSE.txt
+  license_file: dist/LICENSE.txt
   summary: An intelligent function scheduler, which selects and executes functions.
-  doc_url: https://schedula.readthedocs.io
+  doc_url: https://schedula.readthedocs.io/en/v{{ version }}
+  doc_source_url: https://github.com/vinci1it2000/schedula/tree/v{{ version }}/doc
 
 extra:
   recipe-maintainers:
