@@ -1,5 +1,5 @@
 {% set name = "schedula" %}
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   - url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
-    sha256: 420b381b003b2f63454965a9f0bda792a061e59b77a4d86d7c92b43cbdb8f2b2
+    sha256: 7a7a3a22b2825682fd03f6e737a33e8b710188424e1baefe9f578702342888ff
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 420b381b003b2f63454965a9f0bda792a061e59b77a4d86d7c92b43cbdb8f2b2
+    sha256: 7a7a3a22b2825682fd03f6e737a33e8b710188424e1baefe9f578702342888ff
     folder: src
 
 build:
