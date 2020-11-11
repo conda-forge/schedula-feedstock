@@ -5,11 +5,11 @@ Home: https://github.com/vinci1it2000/schedula
 
 Package license: EUPL-1.1
 
-Feedstock license: BSD 3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedstock/blob/master/LICENSE.txt)
 
 Summary: An intelligent function scheduler, which selects and executes functions.
 
-
+Documentation: https://schedula.readthedocs.io/en/v1.2.1
 
 Current build status
 ====================
