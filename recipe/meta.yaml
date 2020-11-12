@@ -38,7 +38,7 @@ requirements:
     - sphinx_rtd_theme
     - sphinxcontrib-restbuilder
   run:
-    - python
+    - python >=3.6
 
 test:
   source_files:
@@ -57,7 +57,6 @@ test:
     - nose
     - pip
     - pygments
-    - python >=3.6
     - python-graphviz <0.10.1
     - regex
     - requests
