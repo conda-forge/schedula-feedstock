@@ -1,5 +1,5 @@
 {% set name = "schedula" %}
-{% set version = "1.2.1" %}
+{% set version = "1.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   - url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
-    sha256: 7a7a3a22b2825682fd03f6e737a33e8b710188424e1baefe9f578702342888ff
+    sha256: ddf2ca94617be5224a7e0971037dcfba7020680262383e766ef2a764a19e1bbc
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 7a7a3a22b2825682fd03f6e737a33e8b710188424e1baefe9f578702342888ff
+    sha256: ddf2ca94617be5224a7e0971037dcfba7020680262383e766ef2a764a19e1bbc
     folder: src
 
 build:
@@ -20,23 +20,8 @@ build:
 
 requirements:
   host:
-    - beautifulsoup4
-    - dill
-    - docutils
-    - flask
-    - jinja2
-    - lxml
-    - multiprocess
-    - nose
     - pip
-    - pygments
     - python >=3.6
-    - python-graphviz
-    - regex
-    - requests
-    - sphinx
-    - sphinx_rtd_theme
-    - sphinxcontrib-restbuilder
   run:
     - python >=3.6
 
@@ -63,7 +48,7 @@ test:
   imports:
     - schedula
   commands:
-    - python -m pip check
+    - pip check
     - cd src && nosetests -e "test_errors"
 
 about:
