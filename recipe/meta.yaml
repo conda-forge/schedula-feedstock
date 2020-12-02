@@ -20,23 +20,8 @@ build:
 
 requirements:
   host:
-    - beautifulsoup4
-    - dill
-    - docutils
-    - flask
-    - jinja2
-    - lxml
-    - multiprocess
-    - nose
     - pip
-    - pygments
     - python >=3.6
-    - python-graphviz
-    - regex
-    - requests
-    - sphinx
-    - sphinx_rtd_theme
-    - sphinxcontrib-restbuilder
   run:
     - python >=3.6
 
@@ -63,7 +48,7 @@ test:
   imports:
     - schedula
   commands:
-    - python -m pip check
+    - pip check
     - cd src && nosetests -e "test_errors"
 
 about:
