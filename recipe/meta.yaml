@@ -1,13 +1,12 @@
-{% set name = "schedula" %}
 {% set version = "1.2.8" %}
 
 package:
-  name: {{ name|lower }}
+  name: schedula
   version: {{ version }}
 
 source:
-  - url: https://github.com/vinci1it2000/{{ name }}/archive/v{{ version }}.tar.gz
-    sha256: 2fa06f3a07dc149ff7fb7895a023a79a04b1dea843cf347a2df314a23febaac8
+  - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
+    sha256: 99897744c9f23b4a9906d2403488084c831afbe05aa70491850b4717bf04184b
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
     sha256: 2fa06f3a07dc149ff7fb7895a023a79a04b1dea843cf347a2df314a23febaac8
@@ -42,20 +41,20 @@ test:
     - nose
     - pip
     - pygments
-    - python-graphviz <0.10.1
+    - python-graphviz
     - regex
     - requests
   imports:
     - schedula
   commands:
     - pip check
-    - cd src && nosetests -e "test_errors"
+    - cd src && nosetests -e "test_(errors|long_path|view)"
 
 about:
   home: https://github.com/vinci1it2000/schedula
   license: EUPL-1.1
   license_family: OTHER
-  license_file: dist/LICENSE.txt
+  license_file: src/LICENSE.txt
   summary: An intelligent function scheduler, which selects and executes functions.
   doc_url: https://schedula.readthedocs.io/en/v{{ version }}
   doc_source_url: https://github.com/vinci1it2000/schedula/tree/v{{ version }}/doc
