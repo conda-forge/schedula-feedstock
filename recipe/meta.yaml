@@ -1,4 +1,4 @@
-{% set version = "1.2.11" %}
+{% set version = "1.2.12" %}
 
 package:
   name: schedula
@@ -6,10 +6,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: 4b008596ff31ff8d61efa70aea39634e4724d0577320d15d369117d6d47ca041
+    sha256: 8822a56c913de522c9d5966f12c03070f80379e1eb32e94992f3544f192fe3bd
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 8699ed12c0f314a8218c71b46221927d2856a3489d022c747b003374c263f5ea
+    sha256: d2f5c1bd10649087fb10ae16c48c66325a50bf1266b35ff3ecd172f3264facba
     folder: src
 
 build:
@@ -48,7 +48,7 @@ test:
     - schedula
   commands:
     - pip check
-    - cd src && nosetests -e "test_(errors|long_path|view)"
+    - cd src && nosetests -e "test_(errors|long_path|view|plot)"
 
 about:
   home: https://github.com/vinci1it2000/schedula
