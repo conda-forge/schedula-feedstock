@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedst
 
 Summary: An intelligent function scheduler, which selects and executes functions.
 
-Documentation: https://schedula.readthedocs.io/en/v1.2.17
+Documentation: https://schedula.readthedocs.io/en/v1.2.18
 
 Current build status
 ====================
