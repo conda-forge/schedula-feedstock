@@ -30,10 +30,10 @@ test:
     - src/tests/utils
     - src/setup.cfg
   requires:
-    - nose
-    - docutils
     - beautifulsoup4
+    - ddt
     - dill
+    - docutils
     - flask
     - jinja2
     - lxml
