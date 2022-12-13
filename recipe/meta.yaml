@@ -50,7 +50,7 @@ test:
     - schedula
   commands:
     - pip check
-    - cd src && nosetests -e "test_(errors|long_path|view|plot)"
+    - cd src && nosetests -e "test_(errors|long_path|view|plot|form)"
 
 about:
   home: https://github.com/vinci1it2000/schedula
