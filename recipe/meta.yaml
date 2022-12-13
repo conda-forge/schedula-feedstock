@@ -26,7 +26,9 @@ requirements:
 
 test:
   source_files:
+    - src/examples
     - src/tests/test_dispatcher.py
+    - src/tests/test_import.py
     - src/tests/utils
     - src/setup.cfg
   requires:
