@@ -1,4 +1,4 @@
-{% set version = "1.3.6" %}
+{% set version = "1.4.0" %}
 
 package:
   name: schedula
@@ -6,10 +6,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: fa647f7716c271051c1d77768a0d4b11953503c02a4716a6436ae9645dd3f41a
+    sha256: e5d7bef9be6c050d514efdde800fc503c1307bdbbcac2670786eeae54e28b7df
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: f1203607d1d4d5f94dcc0562b52d16b9091ec81bbc9b44be08d60902df5d1ad5
+    sha256: 06cf5a44188cdac7efa6085f6a8a6d8ba3b0607ca19857bad2e481b2223a5df5
     folder: src
 
 build:
@@ -26,14 +26,16 @@ requirements:
 
 test:
   source_files:
+    - src/examples
     - src/tests/test_dispatcher.py
+    - src/tests/test_import.py
     - src/tests/utils
     - src/setup.cfg
   requires:
-    - nose
-    - docutils
     - beautifulsoup4
+    - ddt
     - dill
+    - docutils
     - flask
     - jinja2
     - lxml
@@ -48,7 +50,7 @@ test:
     - schedula
   commands:
     - pip check
-    - cd src && nosetests -e "test_(errors|long_path|view|plot)"
+    - cd src && nosetests -e "test_(errors|long_path|view|plot|form|map_dispatch)"
 
 about:
   home: https://github.com/vinci1it2000/schedula
