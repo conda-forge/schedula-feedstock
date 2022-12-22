@@ -37,6 +37,7 @@ test:
     - dill
     - docutils
     - flask
+    - gevent
     - jinja2
     - lxml
     - multiprocess
