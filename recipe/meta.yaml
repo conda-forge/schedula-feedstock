@@ -1,4 +1,4 @@
-{% set version = "1.4.3" %}
+{% set version = "1.4.4" %}
 
 package:
   name: schedula
@@ -6,10 +6,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: f4dd117f448cc94aa3d917e639966c9df95d0aab0d4cd94bb3ea7aea38738fef
+    sha256: 4cca47e683c5a3586f513266dc7cbc8bae78b1df26a8d31766499ccb16149fcd
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: eef89c3124aab550e26150404b93feec3303edc74c94cd99c071165012972fe9
+    sha256: 009cfd7bc36889c53251f5ae28550812b02d1331dbd90a1e42ec5d8ddda9d235
     folder: src
 
 build:
