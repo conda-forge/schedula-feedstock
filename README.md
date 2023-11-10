@@ -1,15 +1,15 @@
-About schedula
-==============
+About schedula-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/vinci1it2000/schedula
 
 Package license: EUPL-1.1
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedstock/blob/main/LICENSE.txt)
-
 Summary: An intelligent function scheduler, which selects and executes functions.
 
-Documentation: https://schedula.readthedocs.io/en/v1.4.9
+Documentation: https://schedula.readthedocs.io/en/v1.5.1
 
 Current build status
 ====================
