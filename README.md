@@ -1,5 +1,5 @@
-About schedula-feedstock
-========================
+About schedula-split-feedstock
+==============================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedstock/blob/main/LICENSE.txt)
 
@@ -7,7 +7,8 @@ Home: https://github.com/vinci1it2000/schedula
 
 Package license: EUPL-1.1
 
-Summary: An intelligent function scheduler, which selects and executes functions.
+Summary: Produce a plan that dispatches calls based on a graph of functions, satisfying
+data dependencies.
 
 Documentation: https://schedula.readthedocs.io/en/v1.5.1
 
@@ -30,27 +31,33 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-schedula-green.svg)](https://anaconda.org/conda-forge/schedula) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula.svg)](https://anaconda.org/conda-forge/schedula) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula.svg)](https://anaconda.org/conda-forge/schedula) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula.svg)](https://anaconda.org/conda-forge/schedula) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--all-green.svg)](https://anaconda.org/conda-forge/schedula-with-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-all.svg)](https://anaconda.org/conda-forge/schedula-with-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-all.svg)](https://anaconda.org/conda-forge/schedula-with-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-all.svg)](https://anaconda.org/conda-forge/schedula-with-all) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--form-green.svg)](https://anaconda.org/conda-forge/schedula-with-form) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-form.svg)](https://anaconda.org/conda-forge/schedula-with-form) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-form.svg)](https://anaconda.org/conda-forge/schedula-with-form) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-form.svg)](https://anaconda.org/conda-forge/schedula-with-form) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--io-green.svg)](https://anaconda.org/conda-forge/schedula-with-io) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-io.svg)](https://anaconda.org/conda-forge/schedula-with-io) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-io.svg)](https://anaconda.org/conda-forge/schedula-with-io) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-io.svg)](https://anaconda.org/conda-forge/schedula-with-io) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--parallel-green.svg)](https://anaconda.org/conda-forge/schedula-with-parallel) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-parallel.svg)](https://anaconda.org/conda-forge/schedula-with-parallel) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-parallel.svg)](https://anaconda.org/conda-forge/schedula-with-parallel) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-parallel.svg)](https://anaconda.org/conda-forge/schedula-with-parallel) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--plot-green.svg)](https://anaconda.org/conda-forge/schedula-with-plot) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-plot.svg)](https://anaconda.org/conda-forge/schedula-with-plot) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-plot.svg)](https://anaconda.org/conda-forge/schedula-with-plot) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-plot.svg)](https://anaconda.org/conda-forge/schedula-with-plot) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--web-green.svg)](https://anaconda.org/conda-forge/schedula-with-web) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-web.svg)](https://anaconda.org/conda-forge/schedula-with-web) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-web.svg)](https://anaconda.org/conda-forge/schedula-with-web) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-web.svg)](https://anaconda.org/conda-forge/schedula-with-web) |
 
-Installing schedula
-===================
+Installing schedula-split
+=========================
 
-Installing `schedula` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `schedula-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `schedula` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `schedula, schedula-with-all, schedula-with-form, schedula-with-io, schedula-with-parallel, schedula-with-plot, schedula-with-web` can be installed with `conda`:
 
 ```
-conda install schedula
+conda install schedula schedula-with-all schedula-with-form schedula-with-io schedula-with-parallel schedula-with-plot schedula-with-web
 ```
 
 or with `mamba`:
 
 ```
-mamba install schedula
+mamba install schedula schedula-with-all schedula-with-form schedula-with-io schedula-with-parallel schedula-with-plot schedula-with-web
 ```
 
 It is possible to list all of the versions of `schedula` available on your platform with `conda`:
@@ -120,17 +127,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating schedula-feedstock
-===========================
+Updating schedula-split-feedstock
+=================================
 
-If you would like to improve the schedula recipe or build a new
+If you would like to improve the schedula-split recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/schedula-feedstock are
+Note that all branches in the conda-forge/schedula-split-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
