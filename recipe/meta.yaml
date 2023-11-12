@@ -175,11 +175,13 @@ outputs:
         - src/tests/utils
         - src/setup.cfg
       requires:
+        - pip
+        # some weird issue
+        - python <3.12
         # tests-require
         - coverage
         - cryptography
         - ddt
-        - python <3.12
       imports:
         - schedula
       commands:
