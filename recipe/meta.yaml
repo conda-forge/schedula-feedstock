@@ -1,4 +1,6 @@
-{% set version = "1.5.1" %}
+{% set cov_fail_under = 77 %}
+{% set min_python = "python >=3.6" %}
+{% set version = "1.5.2" %}
 {% set min_python = "python >=3.6" %}
 
 
@@ -8,10 +10,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: f906eaa3a4dc7e0fb531d879d553cb0a3b38257ba119ab52fe74ee611e3b5622
+    sha256: 2dee37bfc91846e2128ab5d9d7480c4b2708458caf7d1586bca2e26547f71a18
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: a2cb2def989259be751d5026a934ce316d44f65daa268bec4e4e72dd62466558
+    sha256: 542cf7c23a73b58b1543b416788b620ad2947fb796c06241cf6914e249df3a60
     folder: src
 
 build:
@@ -25,8 +27,7 @@ requirements:
     - {{ min_python }}
 
 test:
-  commands:
-    echo tests in subpackages
+  commands: echo tests in subpackages
 
 outputs:
   - name: schedula
