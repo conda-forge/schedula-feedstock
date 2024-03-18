@@ -168,12 +168,11 @@ outputs:
       imports:
         - schedula
       commands:
-        {% set cov_fail_under = 77 %}
         - pip check
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
         - coverage run --source=schedula --branch -m unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under="{{ cov_fail_under }}"
+        - coverage report --show-missing --skip-covered --fail-under=77
 
 about:
   home: https://github.com/vinci1it2000/schedula
