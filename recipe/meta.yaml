@@ -1,10 +1,8 @@
-{% set min_python = "python >=3.6" %}
-{% set min_python = "python >=3.6" %}
-{% set cov_fail_under = 77 %}
-{% set min_python = "python >=3.6" %}
 {% set version = "1.5.4" %}
 {% set min_python = "python >=3.6" %}
 
+# handle undefined PYTHON in `noarch: generic` outputs
+{% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
 
 package:
   name: schedula-split
@@ -53,12 +51,9 @@ outputs:
 
   - name: schedula-with-io
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage('schedula', exact=True) }}
         - dill !=0.2.7
     test:
@@ -71,12 +66,9 @@ outputs:
 
   - name: schedula-with-web
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage('schedula', exact=True) }}
         - flask
         - regex
@@ -91,12 +83,9 @@ outputs:
 
   - name: schedula-with-parallel
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage('schedula', exact=True) }}
         - multiprocess
     test:
@@ -109,12 +98,9 @@ outputs:
 
   - name: schedula-with-plot
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage('schedula-with-web', exact=True) }}
         - {{ pin_subpackage('schedula', exact=True) }}
         - python-graphviz >=0.17
@@ -131,12 +117,9 @@ outputs:
 
   - name: schedula-with-form
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage('schedula-with-web', exact=True) }}
         - {{ pin_subpackage('schedula', exact=True) }}
         - flask-babel
@@ -158,12 +141,9 @@ outputs:
 
   - name: schedula-with-all
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage('schedula-with-form', exact=True) }}
         - {{ pin_subpackage('schedula-with-io', exact=True) }}
         - {{ pin_subpackage('schedula-with-parallel', exact=True) }}
