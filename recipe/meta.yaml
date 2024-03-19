@@ -1,4 +1,5 @@
-{% set version = "1.5.4" %}
+{% set min_python = "python >=3.6" %}
+{% set version = "1.5.5" %}
 {% set min_python = "python >=3.6" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
@@ -10,10 +11,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: a3eded0aa70127dc4ab3c6213ea95c7beef73c2f33c1566828f4fa2de000eca2
+    sha256: 72734e52ef4031abaa781ee44c68656a273db7395d4178d1fa4ce86006d82835
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 76cd1199352f9092a680d10b4671b344ef7059faffc82192a8a06d2af32417fc
+    sha256: 0c92aa06f54a7f8f5a0940ad62b262ce714b4ec94d799c5d41b1707c0fa4350e
     folder: src
 
 build:
