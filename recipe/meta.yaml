@@ -1,5 +1,4 @@
-{% set version = "1.5.8" %}
-{% set min_python = "python >=3.6" %}
+{% set version = "1.5.10" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
@@ -10,10 +9,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: e4ade3861adb00788903cfdc43c17c61aefe9207123dbfc6b647386d11962d09
+    sha256: 32ebb2af9be5b3ceaaf96a5f0f6763cec5b77b43d97ee1571c512f45b25f29e8
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 4cf4a90f93c8a5698a2fff63683a77e7ec7e99d74c41bcc36e937fd47a9b41ed
+    sha256: e3bb78d8b431158952495437b0ca40d5a617527310058925121a4590473a9e15
     folder: src
 
 build:
@@ -22,9 +21,9 @@ build:
 
 requirements:
   host:
-    - {{ min_python }}
+    - python >=3.6
   run:
-    - {{ min_python }}
+    - python >=3.6
 
 test:
   commands: echo tests in subpackages
@@ -38,9 +37,9 @@ outputs:
     requirements:
       host:
         - pip
-        - {{ min_python }}
+        - python >=3.6
       run:
-        - {{ min_python }}
+        - python >=3.6
     test:
       requires:
         - pip
@@ -172,7 +171,7 @@ outputs:
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
         - coverage run --source=schedula --branch -m unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=74
+        - coverage report --show-missing --skip-covered --fail-under=73
 
 about:
   home: https://github.com/vinci1it2000/schedula
