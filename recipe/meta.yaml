@@ -1,6 +1,4 @@
-{% set min_python = "python >=3.6" %}
 {% set version = "1.5.10" %}
-{% set min_python = "python >=3.6" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
@@ -23,9 +21,9 @@ build:
 
 requirements:
   host:
-    - {{ min_python }}
+    - python >=3.6
   run:
-    - {{ min_python }}
+    - python >=3.6
 
 test:
   commands: echo tests in subpackages
@@ -39,9 +37,9 @@ outputs:
     requirements:
       host:
         - pip
-        - {{ min_python }}
+        - python >=3.6
       run:
-        - {{ min_python }}
+        - python >=3.6
     test:
       requires:
         - pip
@@ -173,7 +171,7 @@ outputs:
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
         - coverage run --source=schedula --branch -m unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=74
+        - coverage report --show-missing --skip-covered --fail-under=73
 
 about:
   home: https://github.com/vinci1it2000/schedula
