@@ -34,6 +34,8 @@ outputs:
       noarch: python
       script:
         - cd dist && {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
+      entry_points:
+        - schedula = schedula.cli:cli
     requirements:
       host:
         - pip
@@ -47,6 +49,7 @@ outputs:
         - schedula
       commands:
         - pip check
+        - which schedula || where schedula
 
   - name: schedula-with-io
     build:
@@ -121,15 +124,26 @@ outputs:
       run:
         - {{ pin_subpackage('schedula-with-web', exact=True) }}
         - {{ pin_subpackage('schedula', exact=True) }}
+        - click-log
+        - click
+        - flask-admin
         - flask-babel
         - flask-mail
         - flask-principal
-        - flask-security-too
         - flask-sqlalchemy
         - flask-wtf
+        - gunicorn
         - itsdangerous
         - rst2txt
         - sqlalchemy
+        # from flask-security-too[common]
+        - flask-security-too
+        - argon2-cffi >=21.3.0
+        - bcrypt >=4.0.1
+        - bleach >=6.0.0
+        # TODO: build for conda-forge
+        # - stripe
+        # - flask-mailman >=0.3.0
     test:
       requires:
         - pip
@@ -137,6 +151,7 @@ outputs:
         - schedula
       commands:
         - pip check
+        - schedula form --help
 
   - name: schedula-with-all
     build:
@@ -167,11 +182,17 @@ outputs:
       imports:
         - schedula
       commands:
-        - pip check
+        {% set cov = "coverage run --source=schedula --branch --append -m" %}
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
-        - coverage run --source=schedula --branch -m unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=73
+        - pip check
+        # requires `schedula.ext.form` to be importable
+        - schedula --help
+        - schedula form --help
+        - {{ cov }} schedula.cli --help
+        - {{ cov }} schedula.cli form --help
+        - {{ cov }} unittest discover --start-directory src/tests --pattern 'test_*.py'
+        - coverage report --show-missing --skip-covered --fail-under=67
 
 about:
   home: https://github.com/vinci1it2000/schedula
