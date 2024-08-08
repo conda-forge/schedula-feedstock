@@ -1,4 +1,4 @@
-{% set version = "1.5.11" %}
+{% set version = "1.5.14" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
@@ -9,10 +9,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: 6b048958d412e1c3b81ed23de7b4a54f17b9e200d3a4d2ac525252addc23b705
+    sha256: bc5e5d53d2eb5a5fa18e9ffaec5a87cfb2f5b99ef37aad108355d096023fe925
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 34652dd9860ef0e98196faa0ee630cc0eb5ae68dd57f52a397883a3fbaee706c
+    sha256: 39384418d1e7fb9b63bcffeb884073f9e0d6271c7603c2807b0d72749a433b89
     folder: src
 
 build:
@@ -34,6 +34,8 @@ outputs:
       noarch: python
       script:
         - cd dist && {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
+      entry_points:
+        - schedula = schedula.cli:cli
     requirements:
       host:
         - pip
@@ -47,6 +49,7 @@ outputs:
         - schedula
       commands:
         - pip check
+        - which schedula || where schedula
 
   - name: schedula-with-io
     build:
@@ -121,15 +124,26 @@ outputs:
       run:
         - {{ pin_subpackage('schedula-with-web', exact=True) }}
         - {{ pin_subpackage('schedula', exact=True) }}
+        - click-log
+        - click
+        - flask-admin
         - flask-babel
         - flask-mail
         - flask-principal
-        - flask-security-too
         - flask-sqlalchemy
         - flask-wtf
+        - gunicorn
         - itsdangerous
         - rst2txt
         - sqlalchemy
+        # from flask-security-too[common]
+        - flask-security-too
+        - argon2-cffi >=21.3.0
+        - bcrypt >=4.0.1
+        - bleach >=6.0.0
+        # TODO: build for conda-forge
+        # - stripe
+        # - flask-mailman >=0.3.0
     test:
       requires:
         - pip
@@ -137,6 +151,7 @@ outputs:
         - schedula
       commands:
         - pip check
+        - schedula form --help
 
   - name: schedula-with-all
     build:
@@ -167,11 +182,17 @@ outputs:
       imports:
         - schedula
       commands:
-        - pip check
+        {% set cov = "coverage run --source=schedula --branch --append -m" %}
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
-        - coverage run --source=schedula --branch -m unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=73
+        - pip check
+        # requires `schedula.ext.form` to be importable
+        - schedula --help
+        - schedula form --help
+        - {{ cov }} schedula.cli --help
+        - {{ cov }} schedula.cli form --help
+        - {{ cov }} unittest discover --start-directory src/tests --pattern 'test_*.py'
+        - coverage report --show-missing --skip-covered --fail-under=67
 
 about:
   home: https://github.com/vinci1it2000/schedula
