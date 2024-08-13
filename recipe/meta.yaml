@@ -1,4 +1,3 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.15" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
@@ -125,6 +124,7 @@ outputs:
       run:
         - {{ pin_subpackage('schedula-with-web', exact=True) }}
         - {{ pin_subpackage('schedula', exact=True) }}
+        - asteval
         - click-log
         - click
         - flask-admin
@@ -137,13 +137,13 @@ outputs:
         - itsdangerous
         - rst2txt
         - sqlalchemy
+        - stripe
         # from flask-security-too[common]
         - flask-security-too
         - argon2-cffi >=21.3.0
         - bcrypt >=4.0.1
         - bleach >=6.0.0
         # TODO: build for conda-forge
-        # - stripe
         # - flask-mailman >=0.3.0
     test:
       requires:
