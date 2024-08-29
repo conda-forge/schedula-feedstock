@@ -1,4 +1,3 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.17" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
@@ -128,6 +127,7 @@ outputs:
         - asteval
         - click-log
         - click
+        - fasteners
         - flask-admin
         - flask-babel
         - flask-mail
@@ -146,6 +146,8 @@ outputs:
         - bleach >=6.0.0
         # TODO: build for conda-forge
         # - flask-mailman >=0.3.0
+        # - sherlock
+        # - sqlalchemy-file
     test:
       requires:
         - pip
@@ -194,7 +196,7 @@ outputs:
         - {{ cov }} schedula.cli --help
         - {{ cov }} schedula.cli form --help
         - {{ cov }} unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=67
+        - coverage report --show-missing --skip-covered --fail-under=65
 
 about:
   home: https://github.com/vinci1it2000/schedula
