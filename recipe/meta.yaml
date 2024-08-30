@@ -1,4 +1,3 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.18" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
@@ -41,6 +40,7 @@ outputs:
       host:
         - pip
         - python >=3.6
+        - setuptools
       run:
         - python >=3.6
     test:
