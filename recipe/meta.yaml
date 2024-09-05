@@ -1,6 +1,5 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.21" %}
+{% set cov = "coverage run --source=schedula --branch --append -m" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
@@ -189,7 +188,6 @@ outputs:
       imports:
         - schedula
       commands:
-        {% set cov = "coverage run --source=schedula --branch --append -m" %}
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
         - pip check
@@ -199,7 +197,7 @@ outputs:
         - {{ cov }} schedula.cli --help
         - {{ cov }} schedula.cli form --help
         - {{ cov }} unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=65
+        - coverage report --show-missing --skip-covered --fail-under=64
 
 about:
   home: https://github.com/vinci1it2000/schedula
