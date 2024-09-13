@@ -1,4 +1,3 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.25" %}
 {% set cov = "coverage run --source=schedula --branch --append -m" %}
 
