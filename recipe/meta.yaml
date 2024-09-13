@@ -1,4 +1,5 @@
-{% set version = "1.5.24" %}
+{% set cov = "coverage run --source=schedula --branch --append -m" %}
+{% set version = "1.5.25" %}
 {% set cov = "coverage run --source=schedula --branch --append -m" %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
@@ -10,10 +11,10 @@ package:
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: 523c4eb804cb190a35601448ace82fa4a40645445f448aa5f0337dbc7c0dccc1
+    sha256: 4f0c7608f986134a68df8d581d29a744d907483c65f5420b93baa39242597778
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 9af9140e3ccb210ea9d1f879430dc72d101d43bbc39ffad1ea48cb685a1582df
+    sha256: fcd0cdc5fd40d89ef13657011e57a6715275eafbeb2941d2ee0a3186e45725b6
     folder: src
 
 build:
