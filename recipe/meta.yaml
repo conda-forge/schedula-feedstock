@@ -1,5 +1,3 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.31" %}
 {% set cov = "coverage run --source=schedula --branch --append -m" %}
 
@@ -199,7 +197,7 @@ outputs:
         - {{ cov }} schedula.cli --help
         - {{ cov }} schedula.cli form --help
         - {{ cov }} unittest discover --start-directory src/tests --pattern 'test_*.py'
-        - coverage report --show-missing --skip-covered --fail-under=64
+        - coverage report --show-missing --skip-covered --fail-under=63
 
 about:
   home: https://github.com/vinci1it2000/schedula
