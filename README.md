@@ -10,7 +10,7 @@ Package license: EUPL-1.1
 Summary: Produce a plan that dispatches calls based on a graph of functions, satisfying
 data dependencies.
 
-Documentation: https://schedula.readthedocs.io/en/v1.5.35
+Documentation: https://schedula.readthedocs.io/en/v1.5.37
 
 Current build status
 ====================
