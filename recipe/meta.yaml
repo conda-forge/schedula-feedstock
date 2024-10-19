@@ -1,9 +1,5 @@
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
 {% set version = "1.5.36" %}
-{% set cov = "coverage run --source=schedula --branch --append -m" %}
+{% if 1 %}{% set cov = "coverage run --source=schedula --branch --append -m" %}{% endif %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
