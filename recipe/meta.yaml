@@ -94,12 +94,14 @@ outputs:
         - {{ pin_subpackage('schedula', exact=True) }}
         - multiprocess
     test:
+      files:
+        - pip_check.py
       requires:
         - pip
       imports:
         - schedula
       commands:
-        - pip check
+        - python pip_check.py "multiprocess .* is not supported on this platform"
 
   - name: schedula-with-plot
     build:
