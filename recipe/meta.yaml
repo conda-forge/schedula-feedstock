@@ -83,7 +83,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
-        - multiprocess
+        - multiprocess !=0.70.17
     test:
       files:
         - pip_check.py
