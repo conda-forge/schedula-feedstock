@@ -6,7 +6,7 @@
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
 
 package:
-  name: schedula-split
+  name: schedula
   version: {{ version }}
 
 source:
@@ -18,48 +18,39 @@ source:
     folder: src
 
 build:
-  noarch: python
   number: 0
+  noarch: python
+  script:
+    - cd dist && {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
+  entry_points:
+    - schedula = schedula.cli:cli
 
 requirements:
   host:
+    - pip
     - python >=3.6
+    - setuptools
   run:
     - python >=3.6
 
 test:
-  commands: echo tests in subpackages
+  requires:
+    - pip
+  imports:
+    - schedula
+  commands:
+    - pip check
+    - which schedula || where schedula
 
 outputs:
   - name: schedula
-    build:
-      noarch: python
-      script:
-        - cd dist && {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
-      entry_points:
-        - schedula = schedula.cli:cli
-    requirements:
-      host:
-        - pip
-        - python >=3.6
-        - setuptools
-      run:
-        - python >=3.6
-    test:
-      requires:
-        - pip
-      imports:
-        - schedula
-      commands:
-        - pip check
-        - which schedula || where schedula
 
   - name: schedula-with-io
     build:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - dill !=0.2.7
     test:
       requires:
@@ -74,7 +65,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - flask
         - regex
         - requests
@@ -91,7 +82,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - multiprocess
     test:
       files:
@@ -108,8 +99,8 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula-with-web', exact=True) }}
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula-with-web", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - python-graphviz >=0.17
         - pygments
         - jinja2
@@ -127,8 +118,8 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula-with-web', exact=True) }}
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula-with-web", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - asteval
         - click-log
         - click
@@ -167,13 +158,15 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula-with-form', exact=True) }}
-        - {{ pin_subpackage('schedula-with-io', exact=True) }}
-        - {{ pin_subpackage('schedula-with-parallel', exact=True) }}
-        - {{ pin_subpackage('schedula-with-plot', exact=True) }}
-        - {{ pin_subpackage('schedula-with-web', exact=True) }}
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula-with-form", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-io", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-parallel", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-plot", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-web", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
     test:
+      files:
+        - pip_check.py
       source_files:
         - src/examples
         - src/tests/test_dispatcher.py
@@ -191,9 +184,9 @@ outputs:
       imports:
         - schedula
       commands:
+        - python pip_check.py "multiprocess .* is not supported on this platform"
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
-        - pip check
         # requires `schedula.ext.form` to be importable
         - schedula --help
         - schedula form --help

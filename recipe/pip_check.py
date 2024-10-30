@@ -15,13 +15,10 @@ import re
 
 def main(*ignores: str) -> int:
     proc = subprocess.Popen([sys.executable, "-m", "pip", "check"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding="utf-8")
-    proc.communicate()
-
-    assert proc.stdout
-    raw = proc.stdout.read().strip()
-
+    stdout = proc.communicate()[0]
+    proc.wait()
     errors = []
-    for line in raw.splitlines():
+    for line in stdout.splitlines():
         if not line.strip():
             continue
         elif any(re.findall(i, line) for i in ignores):
