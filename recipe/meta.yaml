@@ -1,64 +1,56 @@
-{% set version = "1.5.37" %}
+{% set version = "1.5.38" %}
+
 {% if 1 %}{% set cov = "coverage run --source=schedula --branch --append -m" %}{% endif %}
 
 # handle undefined PYTHON in `noarch: generic` outputs
 {% if PYTHON is not defined %}{% set PYTHON = "$PYTHON" %}{% endif %}
 
 package:
-  name: schedula-split
+  name: schedula
   version: {{ version }}
 
 source:
   - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: b72a66d2d714bbaada9598eb9af5e0e625d4ca3d30e298113e26f130a62c8e3b
+    sha256: 91c6800583e5011dd1e236ebf738e33ad85fcca1ddbdc8317ccb0cf8dec26313
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 1a871dd63bcfef8fb6a0669e89d411a2c2939f50af7af64bc878565f1e06658d
+    sha256: e3715f73ee2aff7fac925bbd4d88b2eadf37ec5bfcaa8ab82a2d580ac297b9c5
     folder: src
 
 build:
-  noarch: python
   number: 0
+  noarch: python
+  script:
+    - cd dist && {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
+  entry_points:
+    - schedula = schedula.cli:cli
 
 requirements:
   host:
+    - pip
     - python >=3.6
+    - setuptools
   run:
     - python >=3.6
 
 test:
-  commands: echo tests in subpackages
+  requires:
+    - pip
+  imports:
+    - schedula
+  commands:
+    - pip check
+    - which schedula || where schedula
 
 outputs:
   - name: schedula
-    build:
-      noarch: python
-      script:
-        - cd dist && {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
-      entry_points:
-        - schedula = schedula.cli:cli
-    requirements:
-      host:
-        - pip
-        - python >=3.6
-        - setuptools
-      run:
-        - python >=3.6
-    test:
-      requires:
-        - pip
-      imports:
-        - schedula
-      commands:
-        - pip check
-        - which schedula || where schedula
 
   - name: schedula-with-io
     build:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - dill !=0.2.7
     test:
       requires:
@@ -73,7 +65,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - flask
         - regex
         - requests
@@ -90,23 +82,25 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula', exact=True) }}
-        - multiprocess
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
+        - multiprocess !=0.70.17
     test:
+      files:
+        - pip_check.py
       requires:
         - pip
       imports:
         - schedula
       commands:
-        - pip check
+        - python pip_check.py "multiprocess .* is not supported on this platform"
 
   - name: schedula-with-plot
     build:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula-with-web', exact=True) }}
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula-with-web", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - python-graphviz >=0.17
         - pygments
         - jinja2
@@ -124,8 +118,8 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula-with-web', exact=True) }}
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula-with-web", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
         - asteval
         - click-log
         - click
@@ -164,13 +158,15 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage('schedula-with-form', exact=True) }}
-        - {{ pin_subpackage('schedula-with-io', exact=True) }}
-        - {{ pin_subpackage('schedula-with-parallel', exact=True) }}
-        - {{ pin_subpackage('schedula-with-plot', exact=True) }}
-        - {{ pin_subpackage('schedula-with-web', exact=True) }}
-        - {{ pin_subpackage('schedula', exact=True) }}
+        - {{ pin_subpackage("schedula-with-form", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-io", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-parallel", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-plot", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula-with-web", max_pin="x.x.x") }}
+        - {{ pin_subpackage("schedula", max_pin="x.x.x") }}
     test:
+      files:
+        - pip_check.py
       source_files:
         - src/examples
         - src/tests/test_dispatcher.py
@@ -188,9 +184,9 @@ outputs:
       imports:
         - schedula
       commands:
+        - python pip_check.py "multiprocess .* is not supported on this platform"
         # doesn't import without chromedriver stuff
         - python -c "__import__('pathlib').Path('src/tests/utils/test_form.py').unlink()"
-        - pip check
         # requires `schedula.ext.form` to be importable
         - schedula --help
         - schedula form --help
