@@ -10,7 +10,7 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/s/schedula/schedula-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/s/schedula/schedula-{{ version }}.tar.gz
     sha256: 5b22779bcb42525917ce08f22507c0450d1be1dbaeb2e5be566544c2c58bed46
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
