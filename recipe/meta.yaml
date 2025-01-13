@@ -1,4 +1,4 @@
-{% set version = "1.5.50" %}
+{% set version = "1.5.51" %}
 
 {% if 1 %}{% set cov = "coverage run --source=schedula --branch --append -m" %}{% endif %}
 
@@ -11,10 +11,10 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/s/schedula/schedula-{{ version }}.tar.gz
-    sha256: 838e3c1cf47f56f69dabafa2939ef3bf7c5e64b90022d17cc69627b966f7ccec
+    sha256: 664143764d8daaa50965616a163b2376a253f74c7ac7c324e4ae91f09e167b31
     folder: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v{{ version }}.tar.gz
-    sha256: 14221fdac730e5524bfcb2e6eed6e05086a5052003e13f6710fb048bd7dfcae4
+    sha256: 4c555c337bd2d37a0bfa069078c97a9ef6604b8f981eea762e2e955ed309100f
     folder: src
 
 build:
