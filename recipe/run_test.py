@@ -4,25 +4,37 @@ from pathlib import Path
 
 FAIL_UNDER = "63"
 COV = ["coverage"]
-RUN = ["run", f"--source=schedula", "--branch", "--apend", "-m"]
-TEST = ["unittest", "discover", "--start-directory", "src/tests", "--pattern",  "test_*.py"]
-HELP_CLI = [
-    ["schedula.cli"],
-    ["schedula.cli", "form"],
+UNLINK = [
+    "src/tests/utils/test_form.py",
+]
+RUN = ["run", "--source=schedula", "--branch", "--append", "-m"]
+TEST = [
+    "unittest",
+    "discover",
+    "--start-directory",
+    "src/tests",
+    "--pattern",
+    "test_*.py",
+]
+CLI = [
+    ["schedula.cli", "--help"],
+    ["schedula.cli", "form", "--help"],
 ]
 REPORT = ["report", "--show-missing", "--skip-covered", f"--fail-under={FAIL_UNDER}"]
 
 
+def do(args: list[str]) -> int:
+    print(">>>", *args, flush=True)
+    return call(args)
+
+
 if __name__ == "__main__":
-    Path("src/tests/utils/test_form.py").unlink()
+    [Path(p).unlink() for p in UNLINK]
     sys.exit(
         # run the cli
-        any(
-            call([*COV, *cli, "--help"])
-            for cli in HELP_CLI
-        )
+        any(do([*COV, *RUN, *cli]) for cli in CLI)
         # run the tests
-        or call([*COV, *RUN, *TEST])
+        or do([*COV, *RUN, *TEST])
         # maybe run coverage
-        or call([*COV, *REPORT])
+        or do([*COV, *REPORT])
     )

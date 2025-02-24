@@ -87,7 +87,7 @@ outputs:
     tests:
       - python:
           python_version: ${{ python_min }}.*
-          pip_check: false
+          pip_check: true
           imports: schedula
   - package:
       name: schedula-with-plot
@@ -163,7 +163,7 @@ outputs:
     tests:
       - python:
           python_version: ${{ python_min }}.*
-          pip_check: false
+          pip_check: true
           imports: schedula
       - files:
           recipe:
