@@ -1,5 +1,5 @@
-About schedula-split-feedstock
-==============================
+About schedula-feedstock
+========================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedstock/blob/main/LICENSE.txt)
 
@@ -10,7 +10,7 @@ Package license: EUPL-1.1
 Summary: Produce a plan that dispatches calls based on a graph of functions, satisfying
 data dependencies.
 
-Documentation: https://schedula.readthedocs.io/en/v1.5.55
+Documentation: https://schedula.readthedocs.io/
 
 Current build status
 ====================
@@ -38,10 +38,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--plot-green.svg)](https://anaconda.org/conda-forge/schedula-with-plot) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-plot.svg)](https://anaconda.org/conda-forge/schedula-with-plot) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-plot.svg)](https://anaconda.org/conda-forge/schedula-with-plot) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-plot.svg)](https://anaconda.org/conda-forge/schedula-with-plot) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-schedula--with--web-green.svg)](https://anaconda.org/conda-forge/schedula-with-web) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/schedula-with-web.svg)](https://anaconda.org/conda-forge/schedula-with-web) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/schedula-with-web.svg)](https://anaconda.org/conda-forge/schedula-with-web) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/schedula-with-web.svg)](https://anaconda.org/conda-forge/schedula-with-web) |
 
-Installing schedula-split
-=========================
+Installing schedula
+===================
 
-Installing `schedula-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `schedula` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -127,17 +127,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating schedula-split-feedstock
-=================================
+Updating schedula-feedstock
+===========================
 
-If you would like to improve the schedula-split recipe or build a new
+If you would like to improve the schedula recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/schedula-split-feedstock are
+Note that all branches in the conda-forge/schedula-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
