@@ -1,5 +1,5 @@
 import sys
-from subprocess import call
+import subprocess
 from pathlib import Path
 
 FAIL_UNDER = "63"
@@ -24,8 +24,20 @@ REPORT = ["report", "--show-missing", "--skip-covered", f"--fail-under={FAIL_UND
 
 
 def do(args: list[str]) -> int:
-    print(">>>", *args, flush=True)
-    return call(args)
+    rc = 1
+    for i in range(5):
+        print(f"[{i + 1}/5] >>>", *args, flush=True)
+        proc = subprocess.Popen(args)
+        try:
+            rc = proc.wait(timeout=60)
+        except TimeoutError:
+            print("!!! failed after 60s, retrying...", flush=True)
+            proc.kill()
+            proc.terminate()
+        else:
+            break
+
+    return rc
 
 
 if __name__ == "__main__":
