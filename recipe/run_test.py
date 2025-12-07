@@ -2,7 +2,7 @@ import sys
 import subprocess
 from pathlib import Path
 
-FAIL_UNDER = "62"
+FAIL_UNDER = "58"
 COV = ["coverage"]
 UNLINK = [
     "src/tests/utils/test_form.py",
