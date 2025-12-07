@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "1.5.70"
+  version: "1.5.71"
 
 recipe:
   name: schedula
@@ -10,10 +10,10 @@ recipe:
 
 source:
   - url: https://pypi.org/packages/source/s/schedula/schedula-${{ version }}.tar.gz
-    sha256: 13e2de3fd47fd85ea548e8f1fcf9b4d4e87fae24d9a99cb98521a6355f3a5e24
+    sha256: b9a894503728e415252d2f52e3ce1ec1c964f40b9a6c43189479ac687e5efdd5
     target_directory: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v${{ version }}.tar.gz
-    sha256: 78768d874df35da9a8dd863095fc0a753663700e5f5d9a133ab2b1055f7d6613
+    sha256: 1ed14bf9ce6c47f6973cfede8d4084376d9aed1d6fae726bc740d405ee583d9f
     target_directory: src
 
 build:
