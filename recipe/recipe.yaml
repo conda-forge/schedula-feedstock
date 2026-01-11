@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: "1.5.75"
+  python_check_max: "3.14
 
 recipe:
   name: schedula
@@ -39,9 +40,11 @@ outputs:
         - python >=${{ python_min }}
     tests:
       - python:
-          python_version: ${{ python_min }}.*
-          pip_check: true
           imports: schedula
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
       - requirements:
           run:
             - python ${{ python_min }}.*
@@ -58,9 +61,12 @@ outputs:
         - dill !=0.2.7
     tests:
       - python:
-          python_version: ${{ python_min }}.*
-          pip_check: true
           imports: schedula
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
+
   - package:
       name: schedula-with-web
     build:
@@ -73,9 +79,11 @@ outputs:
         - requests
     tests:
       - python:
-          python_version: ${{ python_min }}.*
-          pip_check: true
           imports: schedula
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
   - package:
       name: schedula-with-parallel
     build:
@@ -86,9 +94,11 @@ outputs:
         - multiprocess !=0.70.17
     tests:
       - python:
-          python_version: ${{ python_min }}.*
-          pip_check: true
           imports: schedula
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
   - package:
       name: schedula-with-plot
     build:
@@ -103,9 +113,11 @@ outputs:
         - docutils
     tests:
       - python:
-          python_version: ${{ python_min }}.*
-          pip_check: true
           imports: schedula
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
   - package:
       name: schedula-with-form
     build:
@@ -115,6 +127,8 @@ outputs:
         - ${{ pin_subpackage("schedula-with-web", upper_bound="x.x.x") }}
         - ${{ pin_subpackage("schedula", upper_bound="x.x.x") }}
         - asteval
+        - boto3
+        - bson
         - click-log
         - click
         - fasteners
@@ -140,9 +154,13 @@ outputs:
         # - sqlalchemy-file
     tests:
       - python:
-          python_version: ${{ python_min }}.*
+          imports: 
+            - schedula
+            - schedula.utils.form.server.items
           pip_check: true
-          imports: schedula
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
       - requirements:
           run:
             - python ${{ python_min }}.*
@@ -162,9 +180,11 @@ outputs:
         - ${{ pin_subpackage("schedula", upper_bound="x.x.x") }}
     tests:
       - python:
-          python_version: ${{ python_min }}.*
-          pip_check: true
           imports: schedula
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - ${{ python_check_max }}.*
       - files:
           recipe:
             - run_test.py
