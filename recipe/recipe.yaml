@@ -138,6 +138,7 @@ outputs:
         - flask-principal
         - flask-sqlalchemy
         - flask-wtf
+        - gridfs
         - gunicorn
         - itsdangerous
         - rst2txt
