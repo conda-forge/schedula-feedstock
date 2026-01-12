@@ -139,6 +139,7 @@ outputs:
         - flask-wtf
         - gunicorn
         - itsdangerous
+        - jsonschema
         - pymongo
         - rst2txt
         - sqlalchemy
