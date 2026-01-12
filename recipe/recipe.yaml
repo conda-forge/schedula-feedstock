@@ -135,6 +135,7 @@ outputs:
         - flask-babel
         - flask-mail
         - flask-principal
+        - flaks-pymongo
         - flask-sqlalchemy
         - flask-wtf
         - gunicorn
