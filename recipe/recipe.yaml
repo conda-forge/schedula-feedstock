@@ -128,7 +128,6 @@ outputs:
         - ${{ pin_subpackage("schedula", upper_bound="x.x.x") }}
         - asteval
         - boto3
-        - bson
         - click-log
         - click
         - fasteners
@@ -138,9 +137,9 @@ outputs:
         - flask-principal
         - flask-sqlalchemy
         - flask-wtf
-        - gridfs
         - gunicorn
         - itsdangerous
+        - pymongo
         - rst2txt
         - sqlalchemy
         - stripe
