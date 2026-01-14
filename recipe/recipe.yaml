@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "1.5.75"
+  version: "1.5.76"
   python_check_max: "3.14"
 
 recipe:
@@ -11,10 +11,10 @@ recipe:
 
 source:
   - url: https://pypi.org/packages/source/s/schedula/schedula-${{ version }}.tar.gz
-    sha256: 71d71f09dfef0bd70926caa8de64906e045166df8eb4e56bd07dd31c7ca9fb81
+    sha256: fbae11f27830aa3a092323529fabfd6e506aa473daf2ab9233f93ecaf3c0573c
     target_directory: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v${{ version }}.tar.gz
-    sha256: 507acabd19ab7e98b169be0bb6ef0fee1955fba780238df4763dbcc16af5c809
+    sha256: 16c1e9e79ab66c466d9c60657ac35d8e93b78fb4b7bd5dd7d28dc7ddd1f82b49
     target_directory: src
 
 build:
@@ -156,7 +156,7 @@ outputs:
         # - sqlalchemy-file
     tests:
       - python:
-          imports: 
+          imports:
             - schedula
             - schedula.utils.form.server.items
           pip_check: true
