@@ -3,12 +3,14 @@ About schedula-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/schedula-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/vinci1it2000/schedula
+Home: https://pypi.org/project/schedula
 
 Package license: EUPL-1.1
 
 Summary: Produce a plan that dispatches calls based on a graph of functions, satisfying
 data dependencies.
+
+Development: https://github.com/vinci1it2000/schedula
 
 Documentation: https://schedula.readthedocs.io/
 
