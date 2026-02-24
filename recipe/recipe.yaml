@@ -126,33 +126,38 @@ outputs:
       run:
         - ${{ pin_subpackage("schedula-with-web", upper_bound="x.x.x") }}
         - ${{ pin_subpackage("schedula", upper_bound="x.x.x") }}
+        - apprise
         - asteval
         - boto3
-        - click-log
         - click
-        - fasteners
+        - click-log
+        - docutils
         - flask-admin
         - flask-babel
         - flask-mail
         - flask-principal
         - flask-pymongo
+        - flask-security
         - flask-sqlalchemy
         - flask-wtf
         - gunicorn
         - itsdangerous
         - jsonschema
-        - pymongo
-        - rst2txt
+        - pydash
+        - python-dateutil
         - sqlalchemy
         - stripe
-        # from flask-security-too[common]
+        # from flask-security[common]
         - flask-security-too
         - argon2-cffi >=21.3.0
         - bcrypt >=4.0.1
         - bleach >=6.0.0
         # TODO: build for conda-forge
+        # - casbin
         # - flask-mailman >=0.3.0
+        # - mongo-schema
         # - sherlock
+        # - sqlalchemy-adapter
         # - sqlalchemy-file
     tests:
       - python:
@@ -211,7 +216,8 @@ about:
   summary: |-
     Produce a plan that dispatches calls based on a graph of functions, satisfying
     data dependencies.
-  homepage: https://github.com/vinci1it2000/schedula
+  homepage: https://pypi.org/project/schedula
+  repository: https://github.com/vinci1it2000/schedula
   documentation: https://schedula.readthedocs.io
 
 extra:
