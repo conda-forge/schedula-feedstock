@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "1.5.78"
+  version: "1.6.3"
   python_check_max: "3.14"
 
 recipe:
@@ -11,10 +11,10 @@ recipe:
 
 source:
   - url: https://pypi.org/packages/source/s/schedula/schedula-${{ version }}.tar.gz
-    sha256: ecf15bf27ddd95af21fbe07aa4ed0a7557ca9f4450d4bfe495c7a25e12f08578
+    sha256: 847483a52f4fce86818773bfe07297ed417ec6f7e57ba82766a6928441199346
     target_directory: dist
   - url: https://github.com/vinci1it2000/schedula/archive/v${{ version }}.tar.gz
-    sha256: 9cb960a153f2ebafb6c45f9ff57e8b8ddcd7ca1a74ba56dbf8d77f7c108243f8
+    sha256: 4985478778e7f3ab222f61c6898250fb36b5aeff629c8ec7854012c530bf3d17
     target_directory: src
 
 build:
@@ -126,33 +126,38 @@ outputs:
       run:
         - ${{ pin_subpackage("schedula-with-web", upper_bound="x.x.x") }}
         - ${{ pin_subpackage("schedula", upper_bound="x.x.x") }}
+        - apprise
         - asteval
         - boto3
-        - click-log
         - click
-        - fasteners
+        - click-log
+        - docutils
         - flask-admin
         - flask-babel
         - flask-mail
         - flask-principal
         - flask-pymongo
+        - flask-security
         - flask-sqlalchemy
         - flask-wtf
         - gunicorn
         - itsdangerous
         - jsonschema
-        - pymongo
-        - rst2txt
+        - pydash
+        - python-dateutil
         - sqlalchemy
         - stripe
-        # from flask-security-too[common]
+        # from flask-security[common]
         - flask-security-too
         - argon2-cffi >=21.3.0
         - bcrypt >=4.0.1
         - bleach >=6.0.0
         # TODO: build for conda-forge
+        # - casbin
         # - flask-mailman >=0.3.0
+        # - mongo-schema
         # - sherlock
+        # - sqlalchemy-adapter
         # - sqlalchemy-file
     tests:
       - python:
@@ -211,7 +216,8 @@ about:
   summary: |-
     Produce a plan that dispatches calls based on a graph of functions, satisfying
     data dependencies.
-  homepage: https://github.com/vinci1it2000/schedula
+  homepage: https://pypi.org/project/schedula
+  repository: https://github.com/vinci1it2000/schedula
   documentation: https://schedula.readthedocs.io
 
 extra:
