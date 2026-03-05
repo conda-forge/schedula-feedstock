@@ -129,6 +129,7 @@ outputs:
         - apprise
         - asteval
         - boto3
+        - celery
         - click
         - click-log
         - docutils
@@ -138,6 +139,7 @@ outputs:
         - flask-principal
         - flask-pymongo
         - flask-security
+        - flask-socketio
         - flask-sqlalchemy
         - flask-wtf
         - gunicorn
