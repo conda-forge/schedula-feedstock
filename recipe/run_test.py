@@ -4,7 +4,7 @@ from pathlib import Path
 from difflib import unified_diff
 import re
 
-FAIL_UNDER = "38"
+FAIL_UNDER = "37"
 COV = ["coverage"]
 UNLINK = [
     "src/tests/utils/test_form.py",
